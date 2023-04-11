@@ -42,18 +42,19 @@ exports.eventReportEditPost = async (req, res) => {
     
     const mailOptions = {
         from: 'Ardian Sallauka <ardiansallauka@gmail.com>',
-        to: req.params.Email,
+        to: eventReport.Email,
         subject: "Data about your event has changed",
-        Null,
-        text: `<div>
-            <p>Data for the event has changed to:</p>
-            <br>
-            <p>NAME: ${req.params.Name}</p>
-            <p>Email: ${req.params.Email}</p>
-            <p>Seats: ${req.params.Seats}</p>
-            <p>Status: ${req.params.Status}</p>
-            <p>EventDate: ${req.params.EventDate}</p>
-        </div>`
+        html: '',
+        text: `
+            Data for the event has changed to:
+            \r\n
+            \r\n
+            NAME: ${eventReport.Name}\r\n
+            Email: ${eventReport.Email}\r\n
+            Seats: ${eventReport.Seats}\r\n
+            Status: ${eventReport.Status}\r\n
+            EventDate: ${eventReport.EventDate}
+        `
     };
 
     const sendMail = promisify(transport.sendMail).bind(transport);
