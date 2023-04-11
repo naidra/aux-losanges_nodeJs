@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const EventReport = mongoose.model('EventReport');
 const Mailjet = require('node-mailjet');
 const { promisify } = require('es6-promisify');
