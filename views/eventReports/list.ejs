@@ -335,8 +335,8 @@ window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(argumen
           <th style="padding-left:0px;"><b>Name</b></th>
           <th><b>Email</b></th>
           <th><b>Seats</b></th>
-          <th><b>Status</b></th>
           <th><b>EventDate</b></th>
+          <th><b>Status</b></th>
           <th style="padding-right:0px;text-align:right;"><b>Action</b></th>
         </tr>
       </thead>
@@ -353,10 +353,18 @@ window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(argumen
               <%= eventReports[i].Seats %>
             </td>
             <td>
-              <%= eventReports[i].Status %>
+              <%= eventReports[i].EventDate %>
             </td>
             <td>
-              <%= eventReports[i].EventDate %>
+              <% if (eventReports[i].Status == "New") { %>
+                <span style="background:#333;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
+              <% } else if (eventReports[i].Status == "Canceled") { %>
+                <span style="background:#ff4f4f;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
+              <% } else if (eventReports[i].Status == "Going") { %>
+                <span style="background:#73f58b;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
+              <% } else if (eventReports[i].Status == "Waiting") { %>
+                <span style="background:#fffc54;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
+              <% } %>
             </td>
             <td class="td-actions text-end" style="padding-right:0px;text-align:right;">
               <!-- <a href="/eventDates/delete/<%= eventReports[i]._id %>" onclick="return confirm('A doni ta fshini grupin?')" class="small text-danger"><i class="fa-solid fa-trash me-1"></i>Fshije</a> -->

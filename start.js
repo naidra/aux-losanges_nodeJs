@@ -28,14 +28,14 @@ try {
 
 
 {/* <script>
-	document.querySelector('html').setAttribute('style', 'opacity: 0 !important');
-	onload = () => {
-		if (location.href === 'https://aux-losanges.ch/event-reports/') {
+  if (location.href === 'https://aux-losanges.ch/event-reports/') {
+    document.querySelector('html').setAttribute('style', 'opacity: 0 !important');
+    onload = () => {
 			const iframe = document.createElement("iframe");
 			iframe.src = "https://aux-losanges-node-js.vercel.app/";
 			document.querySelector('#outer-wrap').innerHTML = iframe.outerHTML;
 			document.querySelector('html').setAttribute('style', '');
 			document.querySelector('#outer-wrap > iframe').setAttribute('style', 'min-height: 100vh');
-		}
-	};
+		};
+	}
 </script> */}
