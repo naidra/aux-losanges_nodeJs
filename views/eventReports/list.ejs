@@ -364,6 +364,8 @@ window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(argumen
                 <span style="background:#73f58b;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
               <% } else if (eventReports[i].Status == "Waiting") { %>
                 <span style="background:#fffc54;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
+              <% } else { %>
+                <span style="background:#f0f0f0;padding:3px 5px;border-radius:4px;"><%= eventReports[i].Status %></span>
               <% } %>
             </td>
             <td class="td-actions text-end" style="padding-right:0px;text-align:right;">
