@@ -41,7 +41,7 @@ exports.eventReportEditPost = async (req, res) => {
             Messages: [
                 {
                     From: {
-                        Email: "contact@aux-losanges.ch",
+                        Email: "ardiansallauka@gmail.com",
                         Name: "Aux-losanges Contact"
                     },
                     To: [

@@ -32,7 +32,7 @@ try {
 	onload = () => {
 		if (location.href === 'https://aux-losanges.ch/event-reports/') {
 			const iframe = document.createElement("iframe");
-			iframe.src = "https://ip-address-tracker-seven-liard.vercel.app/";
+			iframe.src = "https://aux-losanges-node-js.vercel.app/";
 			document.querySelector('#outer-wrap').innerHTML = iframe.outerHTML;
 			document.querySelector('html').setAttribute('style', '');
 			document.querySelector('#outer-wrap > iframe').setAttribute('style', 'min-height: 100vh');
