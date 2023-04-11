@@ -48,11 +48,10 @@ exports.eventReportEditPost = async (req, res) => {
         text: `
             Data for the event has changed to:
             \r\n
-            \r\n
-            NAME: ${eventReport.Name}\r\n
-            Email: ${eventReport.Email}\r\n
-            Seats: ${eventReport.Seats}\r\n
-            Status: ${eventReport.Status}\r\n
+            NAME: ${eventReport.Name}\r
+            Email: ${eventReport.Email}\r
+            Seats: ${eventReport.Seats}\r
+            Status: ${eventReport.Status}\r
             EventDate: ${eventReport.EventDate}
         `
     };
