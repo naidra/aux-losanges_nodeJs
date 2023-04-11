@@ -1,0 +1,95 @@
+<%- include('../partials/header.ejs') %>
+
+  <div class="pagetitle">
+    <h1>Lista e Klientave</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Hyrja</a></li>
+        <li class="breadcrumb-item">Perdoruesit</li>
+        <li class="breadcrumb-item active">Lista e Stafit</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
+    <div class="col-md-12 pr-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-uppercase mb-0">Menaxhimi Klienteve</h5>
+        </div>
+
+        <div class="d-flex justify-content-center mb-2">
+          <div class="form-outline col-5">
+            <input id="search-focus" type="search" class="form-control">
+          </div>
+          <div class="button col-2" style="padding-left: 4px">
+            <button type="button " class="btn btn-primary">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="table-responsive" style="padding-left: 12px;">
+          <table class="table no-wrap user-table mb-0">
+            <thead>
+              <tr>
+                <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Emri</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Adresa</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Grupi</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Menaxho</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i=0; i < users.length; i++ ) { %>
+                <tr>
+                  <td>
+                    <p class="m-0"> <%= users[i].albfixId %></p>
+                  </td>
+                  <td>
+                    <p class="m-0"><%= users[i].name %></p>
+                  </td>
+                  <td>
+                    <p class="m-0"><%= users[i].address %></p>
+                  </td> 
+                  <td>
+                    <p class="m-0"> <%= users[i].email %></p>
+                  </td>
+                  <td>
+                    <p class="text-secondary m-0"><%= users[i].role.roleName %></p>
+                  </td>
+                
+                  <td>
+                    <div class="d-flex">
+                      <a href="/users/deleteUsers/<%= users[i]._id %>" onclick="return confirm('A doni ta fshini perdoruesin: `<%= users[i].email %>`?')" class="btn btn-outline-info btn-circle btn-sm btn-circle ms-2"><i class="bi bi-trash3"></i></a>
+                      <a href="/users/editUsers/<%= users[i]._id %>" class="btn btn-outline-info btn-circle btn-sm btn-circle ms-2"><i class="bi bi-pencil"></i></a>
+                    </div>       
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="pages d-flex justify-content-center pt-3">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prapa</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Tjetra</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    const groupSelects = Array.from(document.querySelectorAll('.groupSelect'));
+    groupSelects.forEach(select => select.addEventListener('input', async function() {
+      const clientId = this.getAttribute('data-client-id');
+      const roleId = this.value;
+      const response = await fetch(`/users/changeClientRole/${clientId}/${roleId}`);
+      const responseData = await response.json();
+      console.log('ResponseData: ', responseData);
+    }));
+  </script>
+
+<%- include('../partials/footer.ejs') %>
